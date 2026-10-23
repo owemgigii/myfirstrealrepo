@@ -8,6 +8,7 @@ while True:
     print("2. View tasks")
     print("3. Mark task as completed")
     print("4. Exit")
+    print("5. Delete a task")
 
     choice = input("Choose an option: ")
 
@@ -47,9 +48,25 @@ else:
             except ValueError:
                 print("Please enter a valid number.")
 
-    elif choice == "4":
+      elif choice == "4":
         print("Goodbye!")
         break
 
-    else:
-        print("Invalid choice. Try again.")
+    elif choice == "5":
+        if not tasks:
+            print("No tasks to delete.")
+        else:
+            for i, task in enumerate(tasks, start=1):
+                print(f"{i}. {task['name']}")
+
+            try:
+                number = int(input("Enter task number to delete: "))
+
+                if 1 <= number <= len(tasks):
+                    removed = tasks.pop(number - 1)
+                    print("Deleted:", removed["name"])
+                else:
+                    print("Invalid task number.")
+
+            except ValueError:
+                print("Please enter a valid number.")
