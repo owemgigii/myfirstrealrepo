@@ -12,9 +12,13 @@ while True:
     choice = input("Choose an option: ")
 
     if choice == "1":
-        task = input("Enter a task: ")
-        tasks.append({"name": task, "done": False})
-        print("Task added successfully!")
+       task = input("Enter a task: ").strip()
+
+if task:
+    tasks.append({"name": task, "done": False})
+    print("Task added successfully!")
+else:
+    print("Task cannot be empty.")
 
     elif choice == "2":
         if not tasks:
